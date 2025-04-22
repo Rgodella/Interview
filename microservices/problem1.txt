@@ -1,0 +1,33 @@
+Problem: RBAC Authentication and Authorization API
+Description:You are tasked with creating an API that implements Role-Based Access Control (RBAC). The system will have various user roles (Admin, Manager, and User) with different access levels to specific resources.
+
+The API will contain the following features:
+Authentication: User must log in with credentials (username/password) to receive a JWT token.
+Authorization: Depending on the role (Admin, Manager, User), users will have access to different endpoints.
+Error Handling: Provide detailed error messages for unauthorized access, invalid inputs, and server errors.
+
+
+Requirements:
+User Roles and Permissions:
+Admin: Can access all endpoints.
+Manager: Can access only manager-related endpoints.
+User: Can access only basic endpoints.
+
+
+End Points:
+POST /login: User logs in with username and password to receive a JWT token.
+GET /admin-dashboard: Only accessible by Admins.
+GET /manager-dashboard: Accessible by Admins and Managers.
+GET /user-dashboard: Accessible by all authenticated users (Admin, Manager, User).
+
+
+Middlewares:
+Authentication Middleware: Verifies the JWT token in the request headers.
+Authorization Middleware: Verifies the user's role and ensures they have the right permissions to access specific routes.
+
+
+Error Handling:
+401 Unauthorized: For invalid or expired tokens.
+403 Forbidden: For users who don’t have access to a resource based on their role.
+404 Not Found: For endpoints that do not exist or are unavailable.
+500 Internal Server Error: For unexpected server-side issues.
